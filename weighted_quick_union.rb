@@ -34,6 +34,7 @@ class WeightedQuickUnion
       @array[j] = i
       @size[i] += @size[j]
     end
+    @array
   end
 
   private
@@ -50,6 +51,20 @@ class WeightedQuickUnion
 end
 
 q = WeightedQuickUnion.new(10)
+q.union(0,5)
+q.union(6,0)
+q.union(9,2)
+q.union(4,3)
+q.union(3,2)
+q.union(6,8)
+q.union(8,9)
+q.union(3,7)
+q.union(0,5)
+q.union(6,0)
 q.union(1,2)
-q.union(2,4)
-p q.connected?(1,4)
+
+#without compression
+# => [0, 0, 9, 4, 0, 0, 0, 0, 0, 4]
+
+#with compression
+# => [0, 0, 4, 0, 0, 0, 0, 0, 0, 4]
