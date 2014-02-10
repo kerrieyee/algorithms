@@ -7,9 +7,11 @@ class QuickFind
 
   def union(num1, num2)
     #N^2 time so much to slow
-    if @array[num1] != @array[num2]
+    num1 = @array[num1]
+    num2 = @array[num2]
+    if num1 != num2
       @array.each_with_index do |e, i|
-        if e == @array[num1]
+        if e == num1
           @array[i] = num2
         end
       end
@@ -22,6 +24,10 @@ class QuickFind
 end
 
 q = QuickFind.new(array)
-q.union(1, 2)
-q.union(2, 4)
-p q.connected(1, 4) #=> true
+q.union(9, 4)
+q.union(6, 4)
+q.union(2, 5)
+q.union(5, 0)
+q.union(4, 2)
+q.union(2, 3)
+#=> [3, 1, 3, 3, 3, 3, 3, 7, 8, 3]
