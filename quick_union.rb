@@ -2,7 +2,7 @@
 array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 class QuickUnion
-
+  #linear time so still slow but fater than quick find
   def initialize(array)
     @array = array
   end
@@ -30,4 +30,3 @@ q = QuickUnion.new(array)
 q.union(1,2)
 q.union(2,4)
 q.connected?(1,4)
-########################################
