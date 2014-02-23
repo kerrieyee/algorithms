@@ -1,18 +1,20 @@
 class ThreeSum
   def initialize(array)
     @array = array.sort
+    @last_index = @array.length - 1
     @count = 0
     @triples = []
   end
 
   def find_triples
-    @array.each_with_index do |e, i|
+
+    @array[0..-3].each_with_index do |e, i|
       num = i + 1
-      @array[num..-1].each_with_index do |d, j|
-        sum = -(e + d)
-        k = search(sum, j)
-        if k != -1 && e < d && d < @array[k]
-          @triples << [e, d, @array[k]]
+      (num..@array.length - 1).to_a.each do |j|
+        sum = @array[i] + @array[j]
+        k = search(-sum, (j+1))
+        if k != -1
+          @triples << [e, @array[j], @array[k]]
           @count += 1
         end
       end
@@ -21,7 +23,7 @@ class ThreeSum
 
   def search(value, low_index)
     high_index = @array.length - 1
-    low_index = 0
+    low_index = low_index
     while low_index <= high_index
       mid_index = middle_index(low_index, high_index)
       if value > @array[mid_index]
