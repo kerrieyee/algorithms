@@ -59,10 +59,11 @@ class StackArrayResize
     return "nope" if @number_of_items == 0
     @number_of_items-=1
     @array[@number_of_items] = nil
+
     if @number_of_items > 0 && @number_of_items == @array.length/4
       resize(@array.length/2)
     end
-    item
+    item.string
   end
 end
 
