@@ -6,8 +6,8 @@ class QuickSort
     @low_index = 0
     @high_index = @array.length - 1
     @hi = @array[-1]
-    @i = 1
-    @j = @high_index
+    @i = @low_index
+    @j = @high_index + 1
   end
 
   def qsort
@@ -19,18 +19,28 @@ class QuickSort
 
   def partition
     while true
-      while @array[@i] < @low
-        break if @array[@i] == @hi
+      while true
         @i += 1
+        break if @array[@i] > @low
+        break if @array[@i] == @hi
       end
 
-      while @array[@j] > @low
-        break if @array[@j] == @low
+      while true
         @j -= 1
+        break if @array[@j] < @low
+        break if @array[@j] == @low
       end
+
       break if @i > @j
       swap(@i, @j)
     end
+  end
+
+  def change_and_less(current_index, val2, option=nil)
+    if option == "decrement"
+    elsif option == "increment"
+    end
+
   end
 
   def insert_pointer
@@ -69,6 +79,6 @@ class QuickSort
   end
 end
 
-q = QuickSort.new(["f", "g", "c", "b", "d", "e", "a", "j", "h", "i"])
+q = QuickSort.new(["d", "h", "g", "e", "f", "j", "b", "a", "i", "c"])
 q.qsort
 p q.array
