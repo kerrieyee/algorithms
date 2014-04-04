@@ -36,13 +36,6 @@ class QuickSort
     end
   end
 
-  def change_and_less(current_index, val2, option=nil)
-    if option == "decrement"
-    elsif option == "increment"
-    end
-
-  end
-
   def insert_pointer
     swap(@j, @low_index)
     @j
