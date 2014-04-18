@@ -6,13 +6,6 @@ class BinaryHeap
     @array = @array.unshift(nil) if array[0] != nil
   end
 
-  def sort
-    last_index = @array.length - 1
-    (1..last_index).to_a.each do |e|
-      swim(e)
-    end
-  end
-
   def heap_sort
     n = @array.length - 1
     k = n/2
